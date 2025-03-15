@@ -22,11 +22,10 @@ jobs:
 
       - name: Build image
         run: |
-          docker build -t ${{secrets.DOCKER_USERNAME}}/first-repo .
-          docker tag ${{secrets.DOCKER_USERNAME}}/first-repo:latest first-repo:latest
+          docker build -t issie-tech-devops .
+          docker tag issie-tech-devops ${{ secrets.DOCKER_USERNAME }}/issie-tech-devops:latest
 
       - name: Push image to Docker Hub
         run: |  
-          docker push ${{ secrets.DOCKER_USERNAME}}/first-repo:latest
-          docker push first-repo:latest
+          docker push ${{ secrets.DOCKER_USERNAME }}/issie-tech-devops:latest
 
