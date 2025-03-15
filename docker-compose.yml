@@ -1,7 +1,18 @@
 version: '3.8'
 
 services:
+  mongodb:
+    container_name: mongodb
+    image: mongo:latest
+    restart: always
+    ports:
+      - '27017:27017'
+    networks:
+      - issie-tech
+
   app:
+    depends_on: 
+      - mongodb
     container_name: issie-tech-devops
     image: issie-tech-devops
     build:
@@ -10,3 +21,9 @@ services:
       - .env
     ports:
       - '3000:3000'
+    networks:
+      - issie-tech
+
+networks:
+  issie-tech:
+    driver: bridge
