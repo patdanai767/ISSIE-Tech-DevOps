@@ -26,7 +26,7 @@ jobs:
           docker tag ${{secrets.DOCKER_USERNAME}}/issie_tech_devops:latest issie_tech_devops:latest
 
       - name: Push image to Docker Hub
-        runs: |  
+        run: |  
           docker push ${{ secrets.DOCKER_USERNAME}}/issie_tech_devops:latest
           docker push issie_tech_devops:latest
 
