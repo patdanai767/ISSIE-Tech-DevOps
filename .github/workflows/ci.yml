@@ -24,5 +24,5 @@ jobs:
         run: |
           docker build -t issie_tech_devops .
           docker tag issie_tech_devops:latest ${{ secrets.DOCKER_USERNAME }}/issie_tech_devops:latest
-          docker push ${{ secrets.DOCKER_USERNAME }}/first-repo
+          docker push issie_tech_devops
 
