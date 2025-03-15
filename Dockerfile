@@ -1,17 +1,19 @@
-FROM node:20-alpine AS base
+FROM node:20-alpine AS dev
 
 WORKDIR /app
-COPY package.json package-lock.json ./
-RUN npm install
+
+COPY . .
+RUN npm install && npm install -g @nestjs/cli
 
 FROM node:20-alpine AS builder
 
 WORKDIR /app
+
 COPY . .
-COPY --from=base /app/node_modules ./node_modules
+COPY --from=dev /app/node_modules ./node_modules
 RUN npm run build
 
-FROM node:20-alpine AS runner
+FROM node:20-alpine AS prod
 
 WORKDIR /app
 COPY --from=builder /app/node_modules ./node_modules
