@@ -20,9 +20,13 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      - name: Build and Push image to Docker Hub
+      - name: Build image
         run: |
           docker build -t issie_tech_devops .
           docker tag issie_tech_devops:latest ${{ secrets.DOCKER_USERNAME }}/issie_tech_devops:latest
+
+      - name: Push image to Docker Hub
+        runs: |  
           docker push issie_tech_devops
+          docker push ${{ secrets.DOCKER_USERNAME }}/issie_tech_devops:latest
 
