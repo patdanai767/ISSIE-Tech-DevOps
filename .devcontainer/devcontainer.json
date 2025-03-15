@@ -3,7 +3,7 @@
   "dockerComposeFile": ["../docker-compose.yml", "./docker-compose.yml"],
   "service": "app",
   "workspaceFolder": "/app",
-  "forwardPorts": [8081],
+  "forwardPorts": [3000],
   "customizations": {
     "vscode": {
       "extensions": ["esbenp.prettier-vscode", "ms-azuretools.vscode-docker"]
